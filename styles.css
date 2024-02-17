@@ -182,3 +182,60 @@ img {
 .delete:hover {
   color: #dc143c;
 }
+
+.app__footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 18px 35px;
+  background-color: var(--dt-very-dark-desaturated-blue);
+  border-radius: var(--border-radius-4);
+}
+
+.app__button {
+  border: none;
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  background-color: transparent;
+  color: var(--lt-very-dark-grayish-blue);
+  cursor: pointer;
+  transition: var(--hover-animation-timing);
+}
+
+.clear:hover {
+  color: var(--lt-light-grayish-blue);
+}
+
+.items-left {
+  cursor: auto;
+}
+
+.items-left,
+.clear {
+  font-size: 1.2rem;
+}
+
+.active-label {
+  margin-inline: 2rem;
+}
+
+.app__toggler {
+  display: none;
+}
+
+.app__toggler:checked + .label {
+  color: var(--primary-blue);
+}
+
+.label {
+  color: var(--lt-very-dark-grayish-blue);
+  font-size: 1.5rem;
+  font-weight: var(--font-weight-700);
+  font-family: "Josefin Sans", sans-serif;
+  cursor: pointer;
+  transition: var(--hover-animation-timing);
+}
+
+.label:hover {
+  color: var(--lt-very-light-grayish-blue);
+}

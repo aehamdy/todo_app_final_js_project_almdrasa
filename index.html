@@ -70,6 +70,45 @@
               <span class="delete">X</span>
             </li>
           </ul>
+
+          <div class="app__footer">
+            <button class="app__button items-left">
+              <span class="tasks-left">0</span> items left
+            </button>
+            <div class="buttons">
+              <form action="">
+                <input
+                  class="app__toggler all"
+                  type="radio"
+                  id="all"
+                  name="shownTasks"
+                  value="all"
+                />
+                <label class="label all-label" for="all">All</label>
+
+                <input
+                  class="app__toggler active"
+                  type="radio"
+                  id="active"
+                  name="shownTasks"
+                  value="active"
+                />
+                <label class="label active-label" for="active">Active</label>
+
+                <input
+                  class="app__toggler completed"
+                  type="radio"
+                  id="completed"
+                  name="shownTasks"
+                  value="completed"
+                />
+                <label class="label completed-label" for="completed"
+                  >Completed</label
+                >
+              </form>
+            </div>
+            <button class="app__button clear">Clear Completed</button>
+          </div>
         </div>
       </div>
     </section>
