@@ -2,22 +2,25 @@
   --primary-blue: hsl(220, 98%, 61%);
   --gradient-color: hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
   /* Light Theme Colors */
-  --very-light-gray: hasl(0, 0%, 98%);
-  --vary-light-grayish-blue: hsl(236, 33%, 92%);
-  --light-grayish-blue: hsl(233, 11%, 84%);
-  --dark-grayish-blue: hsl(236, 9%, 61%);
-  --very-dark-grayish-blue: hsl(235, 19%, 35%);
+  --lt-very-light-gray: hasl(0, 0%, 98%);
+  --lt-very-light-grayish-blue: hsl(236, 33%, 92%);
+  --lt-light-grayish-blue: hsl(233, 11%, 84%);
+  ---lt-dark-grayish-blue: hsl(236, 9%, 61%);
+  --lt-very-dark-grayish-blue: hsl(235, 19%, 35%);
   /* Dark Theme Colors */
-  --very-dark-blue: hsl(235, 21%, 11%);
-  --very-dark-desaturated-blue: hsl(235, 24%, 19%);
-  --light-grayish-blue: hsl(234, 39%, 85%);
-  --light-grayish-blue-hover: hsl(236, 33%, 92%);
-  --dark-grayish-blue: hsl(234, 11%, 52%);
-  --very-dark-grayish-blue: hsl(233, 14%, 35%);
-  --very-dark-grayish-blue: hsl(237, 14%, 26%);
+  --dt-very-dark-blue: hsl(235, 21%, 11%);
+  --dt-very-dark-desaturated-blue: hsl(235, 24%, 19%);
+  --dt-light-grayish-blue: hsl(234, 39%, 85%);
+  --dt-light-grayish-blue-hover: hsl(236, 33%, 92%);
+  --dt-dark-grayish-blue: hsl(234, 11%, 52%);
+  --dt-very-dark-grayish-blue: hsl(233, 14%, 35%);
+  /* --very-dark-grayish-blue: hsl(237, 14%, 26%); */
 
   --font-weight-400: 400;
   --font-weight-700: 700;
+
+  --border-radius-4: 4px;
+  --hover-animation-timing: 0.3s;
 }
 
 * {
@@ -33,4 +36,149 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Josefin Sans", sans-serif;
+  background-color: var(--dt-very-dark-blue);
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+img {
+  width: 100%;
+  height: 45%;
+  background-size: cover;
+  background-position: center;
+}
+
+.app {
+  min-width: 380px;
+  max-width: 500px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.app__header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.app__heading {
+  font-size: 3.3rem;
+  color: var(--lt-very-light-grayish-blue);
+  letter-spacing: 14px;
+}
+
+.app__icon {
+  width: 30px;
+}
+
+.app__inputs {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+  padding: 15px 30px;
+  font-size: 2rem;
+  background-color: var(--dt-very-dark-desaturated-blue);
+  border-radius: var(--border-radius-4);
+}
+
+.app__input {
+  border: none;
+  background-color: transparent;
+  margin-inline-end: 12px;
+  padding: 10px 20px;
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 1.8rem;
+  color: var(--lt-very-light-grayish-blue);
+  letter-spacing: 1px;
+}
+
+.app__input:focus {
+  border: none;
+  outline: none;
+  caret-color: var(--primary-blue);
+}
+
+.app__submit {
+  border: none;
+  padding: 10px 20px;
+  font-size: 2rem;
+  border-radius: var(--border-radius-4);
+  background-color: var(--dt-dark-grayish-blue);
+  cursor: pointer;
+  transition: var(--hover-animation-timing);
+}
+
+.app__submit:hover {
+  color: var(--);
+  background-color: var(--primary-blue);
+}
+
+.app__body {
+  border-radius: var(--border-radius-4);
+  background-color: var(--dt-very-dark-desaturated-blue);
+}
+
+.app__task {
+  display: block;
+  position: relative;
+  display: flex;
+  gap: 2rem;
+  font-size: 1.8rem;
+  color: var(--lt-light-grayish-blue);
+  padding: 22px 35px;
+  border-bottom: 0.1rem solid var(--dt-dark-grayish-blue);
+  cursor: pointer;
+  transition: var(--hover-animation-timing);
+}
+
+.app__task:hover {
+  color: var(--lt-very-light-grayish-blue);
+}
+
+.app__task:hover .checkmark {
+  border-color: var(--lt-dark-grayish-blue);
+}
+
+.app__task:hover .delete {
+  display: inline-block;
+}
+
+/* Hide default checkbox */
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  background-color: transparent;
+  border: 1px solid var(--dt-very-dark-grayish-blue);
+  border-radius: 50%;
+  transition: var(--hover-animation-timing);
+}
+
+.delete {
+  display: none;
+  position: absolute;
+  right: 35px;
+  font-size: 2rem;
+  font-family: sans-serif;
+  color: var(--dt-very-dark-grayish-blue);
+  transition: var(--hover-animation-timing);
+}
+
+.delete:hover {
+  color: #dc143c;
 }

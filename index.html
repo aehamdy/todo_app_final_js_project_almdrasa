@@ -20,5 +20,58 @@
     <link rel="stylesheet" href="./styles.css" />
     <title>Frontend Mentor | Todo app</title>
   </head>
-  <body></body>
+  <body>
+    <section class="container">
+      <img src="./images/bg-desktop-dark.jpg" alt="Background Image" />
+      <div class="app">
+        <div class="app__header">
+          <h1 class="app__heading">TODO</h1>
+          <img
+            class="app__icon"
+            src="./images/icon-sun.svg"
+            alt=""
+            fill="#FFF"
+          />
+        </div>
+
+        <div class="app__inputs">
+          <input
+            class="app__input"
+            type="text"
+            placeholder="Create a new todo..."
+          />
+          <input class="app__submit" type="submit" value="+" role="button" />
+        </div>
+
+        <div class="app__body">
+          <ul class="app__tasks">
+            <li class="app__task" draggable="true">
+              <input class="checkbox checked" type="checkbox" />
+              <span class="checkmark"></span>
+              Jog around the park 3x
+              <span class="delete">X</span>
+            </li>
+            <li class="app__task" draggable="true">
+              <input class="checkbox" type="checkbox" />
+              <span class="checkmark"></span>
+              10 minutes meditation
+              <span class="delete">X</span>
+            </li>
+            <li class="app__task" draggable="true">
+              <input class="checkbox" type="checkbox" />
+              <span class="checkmark"></span>
+              Read for 1 hour
+              <span class="delete">X</span>
+            </li>
+            <li class="app__task" draggable="true">
+              <input class="checkbox" type="checkbox" />
+              <span class="checkmark"></span>
+              Pick up groceries
+              <span class="delete">X</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
