@@ -239,3 +239,17 @@ img {
 .label:hover {
   color: var(--lt-very-light-grayish-blue);
 }
+
+@media (max-width: 767px) {
+  form {
+    position: absolute;
+    bottom: -80px;
+    background-color: var(--dt-very-dark-desaturated-blue);
+    padding: 18px 30px;
+    width: 100%;
+    left: 0;
+    border-radius: var(--border-radius-4);
+    display: flex;
+    justify-content: space-evenly;
+  }
+}
