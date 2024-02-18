@@ -26,7 +26,6 @@
       <div class="app">
         <div class="app__header">
           <h1 class="app__heading">TODO</h1>
-          <!-- <img class="app__icon" src="./images/icon-sun.svg" alt="" /> -->
           <input class="app__theme-toggler checked" type="checkbox" />
           <div class="app__theme-image"></div>
         </div>
@@ -43,36 +42,36 @@
         <div class="app__body">
           <ul class="app__tasks">
             <li class="app__task" draggable="true">
-              <input class="checkbox checked" type="checkbox" />
-              <span class="checkmark"></span>
+              <input class="app__checkbox checked" type="checkbox" />
+              <span class="app__checkmark"></span>
               Jog around the park 3x
-              <span class="delete">X</span>
+              <span class="app__delete">X</span>
             </li>
             <li class="app__task" draggable="true">
-              <input class="checkbox" type="checkbox" />
-              <span class="checkmark"></span>
+              <input class="app__checkbox" type="checkbox" />
+              <span class="app__checkmark"></span>
               10 minutes meditation
-              <span class="delete">X</span>
+              <span class="app__delete">X</span>
             </li>
             <li class="app__task" draggable="true">
-              <input class="checkbox" type="checkbox" />
-              <span class="checkmark"></span>
+              <input class="app__checkbox" type="checkbox" />
+              <span class="app__checkmark"></span>
               Read for 1 hour
-              <span class="delete">X</span>
+              <span class="app__delete">X</span>
             </li>
             <li class="app__task" draggable="true">
-              <input class="checkbox" type="checkbox" />
-              <span class="checkmark"></span>
+              <input class="app__checkbox" type="checkbox" />
+              <span class="app__checkmark"></span>
               Pick up groceries
-              <span class="delete">X</span>
+              <span class="app__delete">X</span>
             </li>
           </ul>
 
           <div class="app__footer">
-            <button class="app__button items-left">
-              <span class="tasks-left">0</span> items left
+            <button class="app__button app__items-left">
+              <span class="app__tasks-left">0</span> items left
             </button>
-            <div class="buttons">
+            <div class="app__buttons">
               <form action="">
                 <input
                   class="app__toggler all"
@@ -81,7 +80,7 @@
                   name="shownTasks"
                   value="all"
                 />
-                <label class="label all-label" for="all">All</label>
+                <label class="app__label all-label" for="all">All</label>
 
                 <input
                   class="app__toggler active"
@@ -90,7 +89,9 @@
                   name="shownTasks"
                   value="active"
                 />
-                <label class="label active-label" for="active">Active</label>
+                <label class="app__label active-label" for="active"
+                  >Active</label
+                >
 
                 <input
                   class="app__toggler completed"
@@ -99,7 +100,7 @@
                   name="shownTasks"
                   value="completed"
                 />
-                <label class="label completed-label" for="completed"
+                <label class="app__label completed-label" for="completed"
                   >Completed</label
                 >
               </form>

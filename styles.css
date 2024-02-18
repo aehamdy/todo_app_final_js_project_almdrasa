@@ -78,7 +78,6 @@ html:has(.app__theme-toggler:checked) .background-image {
 .app__header {
   display: flex;
   justify-content: space-between;
-  cursor: pointer;
 }
 
 .app__heading {
@@ -178,16 +177,16 @@ html:has(.app__theme-toggler:checked) .background-image {
   color: var(--task-text-color-checked);
 }
 
-.app__task:hover .checkmark {
+.app__task:hover .app__checkmark {
   border-color: var(--lt-dark-grayish-blue);
 }
 
-.app__task:hover .delete {
+.app__task:hover .app__delete {
   display: inline-block;
 }
 
 /* Hide default checkbox */
-.checkbox {
+.app__checkbox {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -196,7 +195,7 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 /* Create a custom checkbox */
-.checkmark {
+.app__checkmark {
   display: inline-block;
   position: relative;
   height: 20px;
@@ -208,7 +207,7 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 /* Create checkmark indicator hidden when not checked */
-.checkmark::after {
+.app__checkmark::after {
   content: "";
   position: absolute;
   left: 25%;
@@ -222,15 +221,15 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 /* Show checkmark when checked */
-.checkbox.checked + .checkmark::after {
+.app__checkbox.checked + .app__checkmark::after {
   display: block;
 }
 
-.checked + .checkmark {
+.checked + .app__checkmark {
   background-image: linear-gradient(to bottom right, #57ddff, #c058f3);
 }
 
-.delete {
+.app__delete {
   display: none;
   position: absolute;
   right: 35px;
@@ -240,7 +239,7 @@ html:has(.app__theme-toggler:checked) .background-image {
   transition: var(--hover-animation-timing);
 }
 
-.delete:hover {
+.app__delete:hover {
   color: var(--delte-task-button-color-hover);
 }
 
@@ -267,11 +266,11 @@ html:has(.app__theme-toggler:checked) .background-image {
   color: var(--task-text-color);
 }
 
-.items-left {
+.app__items-left {
   cursor: auto;
 }
 
-.items-left,
+.app__items-left,
 .clear {
   font-size: 1.2rem;
 }
@@ -284,11 +283,11 @@ html:has(.app__theme-toggler:checked) .background-image {
   display: none;
 }
 
-.app__toggler:checked + .label {
+.app__toggler:checked + .app__label {
   color: var(--primary-blue);
 }
 
-.label {
+.app__label {
   color: var(--app-button-text-color);
   font-size: 1.5rem;
   font-weight: var(--font-weight-700);
@@ -297,7 +296,7 @@ html:has(.app__theme-toggler:checked) .background-image {
   transition: var(--hover-animation-timing);
 }
 
-.label:hover {
+.app__label:hover {
   color: var(--task-text-color-hover);
 }
 
@@ -312,6 +311,7 @@ html:has(.app__theme-toggler:checked) .background-image {
     border-radius: var(--border-radius-4);
     display: flex;
     justify-content: space-evenly;
+    transition: var(--hover-animation-timing);
   }
 }
 
