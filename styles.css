@@ -1,20 +1,29 @@
 :root {
   --primary-blue: hsl(220, 98%, 61%);
   --gradient-color: hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
+
   /* Light Theme Colors */
-  --lt-very-light-gray: hasl(0, 0%, 98%);
+  --lt-very-light-gray: hsl(0, 0%, 98%);
   --lt-very-light-grayish-blue: hsl(236, 33%, 92%);
-  --lt-light-grayish-blue: hsl(233, 11%, 84%);
+  /* --lt-light-grayish-blue: hsl(233, 11%, 84%); */
   ---lt-dark-grayish-blue: hsl(236, 9%, 61%);
   --lt-very-dark-grayish-blue: hsl(235, 19%, 35%);
+
   /* Dark Theme Colors */
-  --dt-very-dark-blue: hsl(235, 21%, 11%);
-  --dt-very-dark-desaturated-blue: hsl(235, 24%, 19%);
   --dt-light-grayish-blue: hsl(234, 39%, 85%);
   --dt-light-grayish-blue-hover: hsl(236, 33%, 92%);
   --dt-dark-grayish-blue: hsl(234, 11%, 52%);
   --dt-very-dark-grayish-blue: hsl(233, 14%, 35%);
   /* --very-dark-grayish-blue: hsl(237, 14%, 26%); */
+
+  --page-bg: hsl(235, 21%, 11%); /*very-dark-blue*/
+  --app-bg: hsl(235, 24%, 19%); /*very-dark-desaturated-blue*/
+  --task-text-color: hsl(234, 39%, 85%); /*light-grayish-blue*/
+  --task-text-color-hover: hsl(236, 33%, 92%);
+  --task-text-color-checked: hsl(234, 11%, 52%);
+  --app-button-text-color: hsl(235, 19%, 35%);
+  --task-border-color: hsl(234, 11%, 52%);
+  --delte-task-button-color-hover: #dc143c;
 
   --font-weight-400: 400;
   --font-weight-700: 700;
@@ -36,7 +45,8 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Josefin Sans", sans-serif;
-  background-color: var(--dt-very-dark-blue);
+  background-color: var(--page-bg);
+  transition: calc(var(--hover-animation-timing) + 0.2s);
 }
 
 .container {
@@ -44,11 +54,16 @@ body {
   height: 100vh;
 }
 
-img {
+.background-image {
+  background: url(./images/bg-desktop-dark.jpg) no-repeat center;
+  background-size: cover;
   width: 100%;
   height: 45%;
-  background-size: cover;
-  background-position: center;
+  transition: calc(var(--hover-animation-timing) + 0.2s);
+}
+
+html:has(.app__theme-toggler:checked) .background-image {
+  background-image: url(./images/bg-desktop-light.jpg);
 }
 
 .app {
@@ -72,8 +87,23 @@ img {
   letter-spacing: 14px;
 }
 
-.app__icon {
+.app__theme-toggler {
+  position: absolute;
+  right: 0;
   width: 30px;
+  height: 30px;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.app__theme-image {
+  width: 30px;
+  background: url(./images/icon-sun.svg) no-repeat center;
+  transition: calc(var(--hover-animation-timing) + 0.2s);
+}
+
+.app__theme-toggler:checked + .app__theme-image {
+  background-image: url(./images/icon-moon.svg);
 }
 
 .app__inputs {
@@ -82,8 +112,9 @@ img {
   margin: 30px 0;
   padding: 15px 30px;
   font-size: 2rem;
-  background-color: var(--dt-very-dark-desaturated-blue);
+  background-color: var(--app-bg);
   border-radius: var(--border-radius-4);
+  transition: calc(var(--hover-animation-timing) + 0.2s);
 }
 
 .app__input {
@@ -94,7 +125,7 @@ img {
   width: 100%;
   font-family: "Josefin Sans", sans-serif;
   font-size: 1.8rem;
-  color: var(--lt-very-light-grayish-blue);
+  color: var(--task-text-color);
   letter-spacing: 1px;
 }
 
@@ -115,13 +146,14 @@ img {
 }
 
 .app__submit:hover {
-  color: var(--);
+  color: #fff;
   background-color: var(--primary-blue);
 }
 
 .app__body {
   border-radius: var(--border-radius-4);
-  background-color: var(--dt-very-dark-desaturated-blue);
+  background-color: var(--app-bg);
+  transition: calc(var(--hover-animation-timing) + 0.2s);
 }
 
 .app__task {
@@ -130,15 +162,20 @@ img {
   display: flex;
   gap: 2rem;
   font-size: 1.8rem;
-  color: var(--lt-light-grayish-blue);
+  color: var(--task-text-color);
   padding: 22px 35px;
-  border-bottom: 0.1rem solid var(--dt-dark-grayish-blue);
+  border-bottom: 0.1rem solid var(--task-border-color);
   cursor: pointer;
   transition: var(--hover-animation-timing);
 }
 
 .app__task:hover {
-  color: var(--lt-very-light-grayish-blue);
+  color: var(--task-text-color-hover);
+}
+
+.app__task:has(.checked) {
+  text-decoration: line-through;
+  color: var(--task-text-color-checked);
 }
 
 .app__task:hover .checkmark {
@@ -161,12 +198,36 @@ img {
 /* Create a custom checkbox */
 .checkmark {
   display: inline-block;
-  height: 18px;
-  width: 18px;
+  position: relative;
+  height: 20px;
+  width: 20px;
   background-color: transparent;
-  border: 1px solid var(--dt-very-dark-grayish-blue);
+  border: 1px solid var(--task-border-color);
   border-radius: 50%;
   transition: var(--hover-animation-timing);
+}
+
+/* Create checkmark indicator hidden when not checked */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  left: 25%;
+  top: 50%;
+  width: 3px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg) translate(-50%, -50%);
+  display: none;
+}
+
+/* Show checkmark when checked */
+.checkbox.checked + .checkmark::after {
+  display: block;
+}
+
+.checked + .checkmark {
+  background-image: linear-gradient(to bottom right, #57ddff, #c058f3);
 }
 
 .delete {
@@ -180,7 +241,7 @@ img {
 }
 
 .delete:hover {
-  color: #dc143c;
+  color: var(--delte-task-button-color-hover);
 }
 
 .app__footer {
@@ -197,13 +258,13 @@ img {
   font-family: "Josefin Sans";
   font-weight: 700;
   background-color: transparent;
-  color: var(--lt-very-dark-grayish-blue);
+  color: var(--app-button-text-color);
   cursor: pointer;
   transition: var(--hover-animation-timing);
 }
 
 .clear:hover {
-  color: var(--lt-light-grayish-blue);
+  color: var(--task-text-color);
 }
 
 .items-left {
@@ -228,7 +289,7 @@ img {
 }
 
 .label {
-  color: var(--lt-very-dark-grayish-blue);
+  color: var(--app-button-text-color);
   font-size: 1.5rem;
   font-weight: var(--font-weight-700);
   font-family: "Josefin Sans", sans-serif;
@@ -237,14 +298,14 @@ img {
 }
 
 .label:hover {
-  color: var(--lt-very-light-grayish-blue);
+  color: var(--task-text-color-hover);
 }
 
 @media (max-width: 767px) {
   form {
     position: absolute;
     bottom: -80px;
-    background-color: var(--dt-very-dark-desaturated-blue);
+    background-color: var(--app-bg);
     padding: 18px 30px;
     width: 100%;
     left: 0;
@@ -252,4 +313,14 @@ img {
     display: flex;
     justify-content: space-evenly;
   }
+}
+
+html:has(.app__theme-toggler:checked) {
+  --page-bg: hsl(236, 33%, 92%);
+  --app-bg: hsl(0, 0%, 98%);
+  --task-text-color: hsl(235, 19%, 35%);
+  --task-text-color-hover: hsl(233, 14%, 35%);
+  --task-text-color-checked: hsl(234, 11%, 52%);
+  --app-button-text-color: hsl(234, 11%, 52%);
+  --task-border-color: hsl(236, 33%, 92%);
 }
