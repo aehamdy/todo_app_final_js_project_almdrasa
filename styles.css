@@ -23,7 +23,7 @@
   --task-text-color-checked: hsl(234, 11%, 52%);
   --app-button-text-color: hsl(235, 19%, 35%);
   --task-border-color: hsl(234, 11%, 52%);
-  --delte-task-button-color-hover: #dc143c;
+  --delete-task-button-color-hover: #dc143c;
 
   --font-weight-400: 400;
   --font-weight-700: 700;
@@ -107,13 +107,18 @@ html:has(.app__theme-toggler:checked) .background-image {
 
 .app__inputs {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  /* justify-content: space-between; */
   margin: 30px 0;
   padding: 15px 30px;
   font-size: 2rem;
   background-color: var(--app-bg);
   border-radius: var(--border-radius-4);
   transition: calc(var(--hover-animation-timing) + 0.2s);
+}
+
+.app__inputsWrapper {
+  display: flex;
 }
 
 .app__input {
@@ -142,6 +147,15 @@ html:has(.app__theme-toggler:checked) .background-image {
   background-color: var(--dt-dark-grayish-blue);
   cursor: pointer;
   transition: var(--hover-animation-timing);
+}
+
+.app__error {
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding-inline-start: 2rem;
+  color: var(--delete-task-button-color-hover);
+  display: none;
 }
 
 .app__submit:hover {
@@ -240,7 +254,7 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 .app__delete:hover {
-  color: var(--delte-task-button-color-hover);
+  color: var(--delete-task-button-color-hover);
 }
 
 .app__footer {

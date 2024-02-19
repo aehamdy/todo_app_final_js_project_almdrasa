@@ -31,13 +31,16 @@
         </div>
 
         <div class="app__inputs">
-          <input
-            required
-            class="app__input"
-            type="text"
-            placeholder="Create a new todo..."
-          />
-          <input class="app__submit" type="submit" value="+" role="button" />
+          <div class="app__inputsWrapper">
+            <input
+              required
+              class="app__input"
+              type="text"
+              placeholder="Create a new todo..."
+            />
+            <input class="app__submit" type="submit" value="+" role="button" />
+          </div>
+          <span class="app__error">Please enter text!</span>
         </div>
 
         <div class="app__body">
