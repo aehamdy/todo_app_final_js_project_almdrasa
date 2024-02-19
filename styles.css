@@ -6,7 +6,7 @@
   --lt-very-light-gray: hsl(0, 0%, 98%);
   --lt-very-light-grayish-blue: hsl(236, 33%, 92%);
   /* --lt-light-grayish-blue: hsl(233, 11%, 84%); */
-  ---lt-dark-grayish-blue: hsl(236, 9%, 61%);
+  --lt-dark-grayish-blue: hsl(236, 9%, 61%);
   --lt-very-dark-grayish-blue: hsl(235, 19%, 35%);
 
   /* Dark Theme Colors */
@@ -18,6 +18,7 @@
 
   --page-bg: hsl(235, 21%, 11%); /*very-dark-blue*/
   --app-bg: hsl(235, 24%, 19%); /*very-dark-desaturated-blue*/
+  --button-color: hsl(236, 9%, 61%);
   --task-text-color: hsl(234, 39%, 85%); /*light-grayish-blue*/
   --task-text-color-hover: hsl(236, 33%, 92%);
   --task-text-color-checked: hsl(234, 11%, 52%);
@@ -144,9 +145,19 @@ html:has(.app__theme-toggler:checked) .background-image {
   padding: 10px 20px;
   font-size: 2rem;
   border-radius: var(--border-radius-4);
-  background-color: var(--dt-dark-grayish-blue);
+  background-color: var(--button-color);
   cursor: pointer;
   transition: var(--hover-animation-timing);
+}
+
+.app__submit:hover,
+.app__submit:active {
+  color: #fff;
+  background-color: var(--primary-blue);
+}
+
+.app__submit:active {
+  transform: scale(0.8);
 }
 
 .app__error {
@@ -174,11 +185,6 @@ html:has(.app__theme-toggler:checked) .background-image {
   100% {
     transform: translateX(-10px);
   }
-}
-
-.app__submit:hover {
-  color: #fff;
-  background-color: var(--primary-blue);
 }
 
 .app__body {
