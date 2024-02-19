@@ -6,30 +6,38 @@ const tasksList = document.querySelector(".app__tasks");
 function showError(message) {
     errorElement.textContent = message;
     errorElement.style.display = "block";
-    inputField.value = "";
 }
 
 const addTask = function () {
     let userInput = inputField.value.trim();
-
+    
     if (!userInput) {
-
+        
         showError("Please enter a valid task");
+
+        inputField.classList.add("app__shake");
+
+        setTimeout(() => {
+            inputField.classList.remove("app__shake")
+        }, 1700);
+
+        inputField.value = "";
         return;
 
     } else {
-        errorElement.innerText = "";
+        errorElement.textContent = "";
+        // errorElement.remove();
 
-    const task = `<li class="app__task" draggable="true">
-    <input class="app__checkbox" type="checkbox">
-    <span class="app__checkmark"></span>
-    ${userInput}
-    <span class="app__delete">X</span>
-    </li>`;
+        const task = `<li class="app__task" draggable="true">
+        <input class="app__checkbox" type="checkbox">
+        <span class="app__checkmark"></span>
+        ${userInput}
+        <span class="app__delete">X</span>
+        </li>`;
 
-    console.log(task);
+        console.log(task);
 
-    inputField.value = "";
+        inputField.value = "";
     };
 };
 

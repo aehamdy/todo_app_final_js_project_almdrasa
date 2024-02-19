@@ -150,12 +150,30 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 .app__error {
+  margin-top: 15px;
   font-size: 1.4rem;
   font-weight: 400;
   letter-spacing: 1px;
   padding-inline-start: 2rem;
   color: var(--delete-task-button-color-hover);
   display: none;
+}
+
+.app__shake {
+  border-bottom: 1px solid var(--delete-task-button-color-hover);
+  animation: shake 0.15s linear 3;
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(-10px);
+  }
 }
 
 .app__submit:hover {
