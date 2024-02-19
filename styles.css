@@ -140,6 +140,10 @@ html:has(.app__theme-toggler:checked) .background-image {
   caret-color: var(--primary-blue);
 }
 
+.app__input:active {
+  transform: scale(0.96);
+}
+
 .app__submit {
   border: none;
   padding: 10px 20px;
