@@ -16,6 +16,11 @@ function shakeOnError() {
     }, 1700);
 };
 
+const getFromStorage = function (key) {
+    const data = localStorage.getItem(key);
+    return data ? JSON.parse(data) : false;
+}
+
 const saveToStorage = function (key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
@@ -39,18 +44,25 @@ const addTask = function () {
             isChecked: false,
         };
 
-        const tasksArr = [];
+        const tasksArr = getFromStorage("tasks") || [];
         
         tasksArr.push(task);
         
         saveToStorage("tasks", tasksArr);
 
-        const li = `<li class="app__task" draggable="true">
+        let li = "";
+
+        tasksArr.forEach(task => {
+        li += `<li class="app__task" draggable="true">
         <input class="app__checkbox" type="checkbox">
         <span class="app__checkmark"></span>
-        ${userInput}
+        ${task.taskValue}
         <span class="app__delete">X</span>
-        </li>`;
+        </li>`
+        });
+
+        tasksList.innerHTML = li;
+
 
         console.log(userInput);
 
