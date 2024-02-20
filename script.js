@@ -6,7 +6,15 @@ const tasksList = document.querySelector(".app__tasks");
 function showError(message) {
     errorElement.textContent = message;
     errorElement.style.display = "block";
-}
+};
+
+function shakeOnError() {
+    inputField.classList.add("app__shake");
+
+    setTimeout(() => {
+        inputField.classList.remove("app__shake")
+    }, 1700);
+};
 
 const addTask = function () {
     let userInput = inputField.value.trim();
@@ -14,14 +22,9 @@ const addTask = function () {
     if (!userInput) {
         
         showError("Please enter a valid task");
-
-        inputField.classList.add("app__shake");
-
-        setTimeout(() => {
-            inputField.classList.remove("app__shake")
-        }, 1700);
-
+        shakeOnError();
         inputField.value = "";
+        
         return;
 
     } else {
