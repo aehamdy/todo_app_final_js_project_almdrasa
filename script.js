@@ -44,13 +44,24 @@ const addTask = function () {
 addButton.addEventListener("click", addTask);
 
 
-/** #TODO
- * #[x] add task to the list
- * #[x] show error message when user inserts invalid text
- * #[ ] update database function
- * #[ ] remove task function
- * #[ ] clear completed task function
- * #[ ] show only active tasks function
- * #[ ] show only completed tasks function
- * #[ ] a variable to count the unchecked tasks
+/*
+TODO
+[x] add task to the list
+[x] show error message when user inserts invalid text
+[ ] activate saving tasks in local storage
+[ ] update database function
+[ ] remove task function
+[ ] clear completed task function
+[ ] show only active tasks function
+[ ] show only completed tasks function
+[ ] a variable to count the unchecked tasks
+[ ] activate toggling dark/light theme by js
+[ ] save the desired theme in the local storage
+[ ]animation on each task when hover over it (font size)
+
+ADDED
+-a button that adds tasks upon click on it
+-style and animation to the button for better UX
+-a validation for the input field
+-animation upon invalid input for better UX
  */

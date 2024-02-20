@@ -224,7 +224,7 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 .app__task:hover .app__delete {
-  display: inline-block;
+  opacity: 1;
 }
 
 /* Hide default checkbox */
@@ -272,7 +272,8 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 .app__delete {
-  display: none;
+  opacity: 0;
+  font-weight: 600;
   position: absolute;
   right: 35px;
   font-size: 2rem;
