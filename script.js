@@ -16,6 +16,10 @@ function shakeOnError() {
     }, 1700);
 };
 
+const saveToStorage = function (key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
 const addTask = function () {
     let userInput = inputField.value.trim();
     
@@ -24,21 +28,31 @@ const addTask = function () {
         showError("Please enter a valid task");
         shakeOnError();
         inputField.value = "";
-        
+
         return;
 
     } else {
         errorElement.textContent = "";
-        // errorElement.remove();
 
-        const task = `<li class="app__task" draggable="true">
+        const task = {
+            taskValue: userInput,
+            isChecked: false,
+        };
+
+        const tasksArr = [];
+        
+        tasksArr.push(task);
+        
+        saveToStorage("tasks", tasksArr);
+
+        const li = `<li class="app__task" draggable="true">
         <input class="app__checkbox" type="checkbox">
         <span class="app__checkmark"></span>
         ${userInput}
         <span class="app__delete">X</span>
         </li>`;
 
-        console.log(task);
+        console.log(userInput);
 
         inputField.value = "";
     };
