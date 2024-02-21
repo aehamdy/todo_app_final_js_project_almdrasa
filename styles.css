@@ -287,6 +287,12 @@ html:has(.app__theme-toggler:checked) .background-image {
   transition: var(--hover-animation-timing);
 }
 
+@media (max-width: 767px) {
+  .app__delete {
+    opacity: 1;
+  }
+}
+
 .app__delete:hover {
   color: var(--delete-task-button-color-hover);
 }

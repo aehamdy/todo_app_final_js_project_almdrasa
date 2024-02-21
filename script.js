@@ -60,7 +60,7 @@ const addTask = function () {
 
         const task = {
             taskValue: userInput,
-            isChecked: true,
+            isChecked: false,
         };
 
         const tasksArr = getFromStorage("tasks") || [];
