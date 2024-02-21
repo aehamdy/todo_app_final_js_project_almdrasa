@@ -45,7 +45,7 @@ const saveToStorage = function (key, value) {
 }
 
 const removeTask = (index) => {
-    const answer = confirm(`Do you really want to remove this task? ${index}`);
+    const answer = confirm(`Do you really want to remove this task?`);
 
     if (!answer) return;
 
@@ -54,11 +54,10 @@ const removeTask = (index) => {
     tasks.splice(index, 1);
 
     saveToStorage("tasks", tasks);
-    renderTasks(tasks)
+    initTasks(tasks)
 };
 
 const initTaskListeners = () => {
-    console.log({ getDeleteButtons:getDeleteButtons() });
     getDeleteButtons().forEach((button, index) => {
         button.addEventListener("click", (e, index) => removeTask(e, index));
     })
@@ -89,15 +88,25 @@ const addTask = function () {
         
         saveToStorage("tasks", tasksArr);
 
-        renderTasks(tasksArr);
-        initTaskListeners();
+        initTasks(tasksArr);
 
         inputField.value = "";
     };
 };
 
-
 addButton.addEventListener("click", addTask);
+
+const initDataOnLoad = () => {
+    initTasks(getFromStorage("tasks"));
+};
+
+const initTasks = (tasks) => {
+    renderTasks(tasks);
+    initTaskListeners();
+};
+
+initDataOnLoad();
+
 
 
 /*
@@ -106,7 +115,8 @@ TODO
 [x] show error message when user inserts invalid text
 [x] activate saving tasks in local storage
 [x] remove task function
-[ ] update database function
+[x] update database function
+[x] display all tasks every time user load the page
 [ ] clear completed task function
 [ ] show only active tasks function
 [ ] show only completed tasks function
