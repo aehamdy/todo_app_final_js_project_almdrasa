@@ -224,6 +224,11 @@ html:has(.app__theme-toggler:checked) .background-image {
   color: var(--task-text-color-checked);
 }
 
+/* Show checkmark when checked */
+.app__task.checked .app__checkmark::after {
+  opacity: 1;
+}
+
 .app__task:hover .app__checkmark {
   border-color: var(--lt-dark-grayish-blue);
 }
@@ -264,15 +269,11 @@ html:has(.app__theme-toggler:checked) .background-image {
   border: solid #fff;
   border-width: 0 3px 3px 0;
   transform: rotate(45deg) translate(-50%, -50%);
-  display: none;
+  opacity: 0;
+  transition: calc(var(--hover-animation-timing));
 }
 
-/* Show checkmark when checked */
-.app__checkbox.checked + .app__checkmark::after {
-  display: block;
-}
-
-.checked + .app__checkmark {
+.checked .app__checkmark {
   background-image: linear-gradient(to bottom right, #57ddff, #c058f3);
 }
 

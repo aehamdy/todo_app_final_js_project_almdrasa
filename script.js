@@ -5,6 +5,8 @@ const tasksList = document.querySelector(".app__tasks");
 let taskItems = document.querySelectorAll(".app__task");
 let taskCheckbox = document.querySelector(".app__checkbox");
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
+const getLis = () => document.querySelectorAll(".app__task");
+
 
 
 function showError(message) {
@@ -62,6 +64,9 @@ const removeTask = (e, index) => {
 const initTaskListeners = () => {
     getDeleteButtons().forEach((button, index) => {
         button.addEventListener("click", (e) => removeTask(e, index));
+    });
+    getLis().forEach((li, index) => {
+        li.addEventListener("click", (e) => toggleTask(e, index));
     })
 }
 
@@ -107,6 +112,13 @@ const initTasks = (tasks) => {
     initTaskListeners();
 };
 
+const toggleTask = (e, index) => {
+    const tasks = getFromStorage("tasks");
+    e.currentTarget.classList.toggle("checked");
+    tasks[index].isChecked = !tasks[index].isChecked;
+    saveToStorage("tasks", tasks);
+}
+
 initDataOnLoad();
 
 
@@ -119,6 +131,7 @@ TODO
 [x] remove task function
 [x] update database function
 [x] display all tasks every time user load the page
+[x] toggle tasks function
 [ ] clear completed task function
 [ ] show only active tasks function
 [ ] show only completed tasks function
