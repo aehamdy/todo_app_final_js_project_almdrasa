@@ -7,6 +7,7 @@ let taskCheckbox = document.querySelector(".app__checkbox");
 const activeButton = document.querySelector(".active-label");
 const completedButton = document.querySelector(".completed-label");
 const allButton = document.querySelector(".all-label");
+const clearButton = document.querySelector(".clear-button");
 
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
@@ -143,6 +144,15 @@ allButton.addEventListener("click", () => {
     tasksList.classList.contains("show-completed") && tasksList.classList.remove("show-completed");
 });
 
+clearButton.addEventListener("click", () => {
+    const data = getFromStorage("tasks");
+    let tasks = data.filter(task => {
+        return task.isChecked === false;
+    });
+    saveToStorage("tasks", tasks);
+    renderTasks(tasks);
+})
+
 initDataOnLoad();
 
 
@@ -158,7 +168,7 @@ TODO
 [x] toggle tasks function
 [x] show only active tasks function
 [x] show only completed tasks function
-[ ] clear completed task function
+[x] clear completed task function
 [ ] a variable to count the unchecked tasks
 [ ] activate toggling dark/light theme by js
 [ ] save the desired theme in the local storage
