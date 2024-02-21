@@ -138,6 +138,11 @@ completedButton.addEventListener("click", () => {
     tasksList.classList.add("show-completed");
 });
 
+allButton.addEventListener("click", () => {
+    tasksList.classList.contains("show-active") && tasksList.classList.remove("show-active");
+    tasksList.classList.contains("show-completed") && tasksList.classList.remove("show-completed");
+});
+
 initDataOnLoad();
 
 
