@@ -45,7 +45,9 @@ const saveToStorage = function (key, value) {
 }
 
 const removeTask = (e, index) => {
-    const answer = confirm(`Do you really want to remove this task?`);
+    const data = getFromStorage("tasks");
+
+    const answer = confirm(`Do you really want to remove "${data[index].taskValue}" task from the list?`);
 
     if (!answer) return;
 
