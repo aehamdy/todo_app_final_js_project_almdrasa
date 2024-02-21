@@ -35,6 +35,7 @@
             <input
               required
               class="app__input"
+              id="app__input"
               type="text"
               placeholder="Create a new todo..."
             />
@@ -47,9 +48,9 @@
           <ul class="app__tasks"></ul>
 
           <div class="app__footer">
-            <button class="app__button app__items-left">
-              <span class="app__tasks-left">0</span> items left
-            </button>
+            <div class="app__items-left">
+              <span class="app__tasks-left"></span> tasks left
+            </div>
             <div class="app__buttons">
               <form action="">
                 <input

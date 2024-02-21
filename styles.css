@@ -329,6 +329,10 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 .app__items-left {
+  font-family: "Josefin Sans";
+  font-weight: 700;
+  color: var(--app-button-text-color);
+  user-select: none;
   cursor: auto;
 }
 

@@ -8,6 +8,7 @@ const activeButton = document.querySelector(".active-label");
 const completedButton = document.querySelector(".completed-label");
 const allButton = document.querySelector(".all-label");
 const clearButton = document.querySelector(".clear-button");
+const tasksCount = document.querySelector(".app__tasks-left");
 
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
@@ -30,7 +31,7 @@ function shakeOnError() {
 const renderTasks = function (tasksArr) {
     let li = "";
 
-    tasksArr.forEach(task => {
+    tasksArr.forEach((task) => {
     li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}">
     <input class="app__checkbox" type="checkbox">
     <span class="app__checkmark"></span>
@@ -40,16 +41,18 @@ const renderTasks = function (tasksArr) {
     });
 
     tasksList.innerHTML = li;
+    taskCounter();
 };
+
 
 const getFromStorage = function (key) {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : false;
-}
+};
 
 const saveToStorage = function (key, value) {
     localStorage.setItem(key, JSON.stringify(value));
-}
+};
 
 const removeTask = (e, index) => {
     const data = getFromStorage("tasks");
@@ -73,7 +76,7 @@ const initTaskListeners = () => {
     getLis().forEach((li, index) => {
         li.addEventListener("click", (e) => toggleTask(e, index));
     })
-}
+};
 
 const addTask = function () {
     let userInput = inputField.value.trim();
@@ -123,6 +126,7 @@ const toggleTask = (e, index) => {
     e.currentTarget.classList.toggle("unchecked");
     tasks[index].isChecked = !tasks[index].isChecked;
     saveToStorage("tasks", tasks);
+    taskCounter();
 };
 
 activeButton.addEventListener("click", () => {
@@ -151,7 +155,15 @@ clearButton.addEventListener("click", () => {
     });
     saveToStorage("tasks", tasks);
     renderTasks(tasks);
-})
+});
+
+const taskCounter = () => {
+    const data = getFromStorage("tasks");
+    let tasks = data.filter((task) => {
+        return task.isChecked === false;
+    });
+    tasksCount.innerHTML = tasks.length > 0 ? tasks.length : 0;
+};
 
 initDataOnLoad();
 
@@ -169,7 +181,7 @@ TODO
 [x] show only active tasks function
 [x] show only completed tasks function
 [x] clear completed task function
-[ ] a variable to count the unchecked tasks
+[x] a variable to count the unchecked tasks
 [ ] activate toggling dark/light theme by js
 [ ] save the desired theme in the local storage
 [ ]animation on each task when hover over it (font size)
