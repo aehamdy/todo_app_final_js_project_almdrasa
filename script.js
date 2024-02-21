@@ -2,6 +2,10 @@ let inputField = document.querySelector(".app__input");
 const addButton = document.querySelector(".app__submit");
 let errorElement = document.querySelector(".app__error");
 const tasksList = document.querySelector(".app__tasks");
+let taskItems = document.querySelectorAll(".app__task");
+let taskCheckbox = document.querySelector(".app__checkbox");
+const deleteButton = document.querySelector(".app__delete");
+
 
 function showError(message) {
     errorElement.textContent = message;
@@ -14,6 +18,21 @@ function shakeOnError() {
     setTimeout(() => {
         inputField.classList.remove("app__shake")
     }, 1700);
+};
+
+const renderTasks = function (tasksArr) {
+    let li = "";
+
+    tasksArr.forEach(task => {
+    li += `<li class="app__task${task.isChecked ? ' checked': ''}">
+    <input class="app__checkbox" type="checkbox">
+    <span class="app__checkmark"></span>
+    ${task.taskValue}
+    <span class="app__delete">X</span>
+    </li>`
+    });
+
+    tasksList.innerHTML = li;
 };
 
 const getFromStorage = function (key) {
@@ -41,7 +60,7 @@ const addTask = function () {
 
         const task = {
             taskValue: userInput,
-            isChecked: false,
+            isChecked: true,
         };
 
         const tasksArr = getFromStorage("tasks") || [];
@@ -50,21 +69,7 @@ const addTask = function () {
         
         saveToStorage("tasks", tasksArr);
 
-        let li = "";
-
-        tasksArr.forEach(task => {
-        li += `<li class="app__task" draggable="true">
-        <input class="app__checkbox" type="checkbox">
-        <span class="app__checkmark"></span>
-        ${task.taskValue}
-        <span class="app__delete">X</span>
-        </li>`
-        });
-
-        tasksList.innerHTML = li;
-
-
-        console.log(userInput);
+        renderTasks(tasksArr);
 
         inputField.value = "";
     };
@@ -77,7 +82,7 @@ addButton.addEventListener("click", addTask);
 TODO
 [x] add task to the list
 [x] show error message when user inserts invalid text
-[ ] activate saving tasks in local storage
+[x] activate saving tasks in local storage
 [ ] update database function
 [ ] remove task function
 [ ] clear completed task function
