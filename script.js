@@ -4,7 +4,7 @@ let errorElement = document.querySelector(".app__error");
 const tasksList = document.querySelector(".app__tasks");
 let taskItems = document.querySelectorAll(".app__task");
 let taskCheckbox = document.querySelector(".app__checkbox");
-const deleteButton = document.querySelector(".app__delete");
+const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 
 
 function showError(message) {
@@ -44,6 +44,26 @@ const saveToStorage = function (key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
 
+const removeTask = (index) => {
+    const answer = confirm(`Do you really want to remove this task? ${index}`);
+
+    if (!answer) return;
+
+    const tasks = getFromStorage("tasks");
+
+    tasks.splice(index, 1);
+
+    saveToStorage("tasks", tasks);
+    renderTasks(tasks)
+};
+
+const initTaskListeners = () => {
+    console.log({ getDeleteButtons:getDeleteButtons() });
+    getDeleteButtons().forEach((button, index) => {
+        button.addEventListener("click", (e, index) => removeTask(e, index));
+    })
+}
+
 const addTask = function () {
     let userInput = inputField.value.trim();
     
@@ -70,10 +90,12 @@ const addTask = function () {
         saveToStorage("tasks", tasksArr);
 
         renderTasks(tasksArr);
+        initTaskListeners();
 
         inputField.value = "";
     };
 };
+
 
 addButton.addEventListener("click", addTask);
 
@@ -83,8 +105,8 @@ TODO
 [x] add task to the list
 [x] show error message when user inserts invalid text
 [x] activate saving tasks in local storage
+[x] remove task function
 [ ] update database function
-[ ] remove task function
 [ ] clear completed task function
 [ ] show only active tasks function
 [ ] show only completed tasks function
