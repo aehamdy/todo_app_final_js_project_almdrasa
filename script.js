@@ -44,7 +44,7 @@ const saveToStorage = function (key, value) {
     localStorage.setItem(key, JSON.stringify(value));
 }
 
-const removeTask = (index) => {
+const removeTask = (e, index) => {
     const answer = confirm(`Do you really want to remove this task?`);
 
     if (!answer) return;
@@ -59,7 +59,7 @@ const removeTask = (index) => {
 
 const initTaskListeners = () => {
     getDeleteButtons().forEach((button, index) => {
-        button.addEventListener("click", (e, index) => removeTask(e, index));
+        button.addEventListener("click", (e) => removeTask(e, index));
     })
 }
 
