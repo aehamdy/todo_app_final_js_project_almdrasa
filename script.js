@@ -131,6 +131,13 @@ activeButton.addEventListener("click", () => {
     tasksList.classList.add("show-active");
 });
 
+completedButton.addEventListener("click", () => {
+    if (tasksList.classList.contains("show-active")) {
+        tasksList.classList.remove("show-active");
+    }
+    tasksList.classList.add("show-completed");
+});
+
 initDataOnLoad();
 
 
@@ -144,9 +151,9 @@ TODO
 [x] update database function
 [x] display all tasks every time user load the page
 [x] toggle tasks function
+[x] show only active tasks function
+[x] show only completed tasks function
 [ ] clear completed task function
-[ ] show only active tasks function
-[ ] show only completed tasks function
 [ ] a variable to count the unchecked tasks
 [ ] activate toggling dark/light theme by js
 [ ] save the desired theme in the local storage
