@@ -4,6 +4,10 @@ let errorElement = document.querySelector(".app__error");
 const tasksList = document.querySelector(".app__tasks");
 let taskItems = document.querySelectorAll(".app__task");
 let taskCheckbox = document.querySelector(".app__checkbox");
+const activeButton = document.querySelector(".active-label");
+const completedButton = document.querySelector(".completed-label");
+const allButton = document.querySelector(".all-label");
+
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
 
@@ -26,7 +30,7 @@ const renderTasks = function (tasksArr) {
     let li = "";
 
     tasksArr.forEach(task => {
-    li += `<li class="app__task${task.isChecked ? ' checked': ''}">
+    li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}">
     <input class="app__checkbox" type="checkbox">
     <span class="app__checkmark"></span>
     ${task.taskValue}
@@ -115,9 +119,17 @@ const initTasks = (tasks) => {
 const toggleTask = (e, index) => {
     const tasks = getFromStorage("tasks");
     e.currentTarget.classList.toggle("checked");
+    e.currentTarget.classList.toggle("unchecked");
     tasks[index].isChecked = !tasks[index].isChecked;
     saveToStorage("tasks", tasks);
-}
+};
+
+activeButton.addEventListener("click", () => {
+    if (tasksList.classList.contains("show-completed")) {
+        tasksList.classList.remove("show-completed")
+    };
+    tasksList.classList.add("show-active");
+});
 
 initDataOnLoad();
 

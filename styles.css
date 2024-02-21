@@ -210,6 +210,13 @@ html:has(.app__theme-toggler:checked) .background-image {
   transition: var(--hover-animation-timing);
 }
 
+.app__tasks.show-active > .checked {
+  display: none;
+}
+
+.app__tasks.show-completed > .unchecked {
+  display: none;
+}
 .app__task:hover {
   color: var(--task-text-color-hover);
 }
