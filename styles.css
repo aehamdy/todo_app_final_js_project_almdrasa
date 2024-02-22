@@ -98,10 +98,6 @@ body {
   transition: calc(var(--hover-animation-timing) + 0.2s);
 }
 
-.app__theme-toggler:checked + .app__theme-image {
-  /* background-image: url(./images/icon-moon.svg); */
-}
-
 .app__inputs {
   display: flex;
   flex-direction: column;
@@ -215,6 +211,7 @@ body {
 }
 .app__task:hover {
   color: var(--task-text-color-hover);
+  font-size: 1.99rem;
 }
 
 /* .app__task:has(.checked) {

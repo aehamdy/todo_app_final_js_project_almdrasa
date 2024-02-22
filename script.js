@@ -202,8 +202,8 @@ TODO
 [x] show only completed tasks function
 [x] clear completed task function
 [x] a variable to count the unchecked tasks
-[ ] activate toggling dark/light theme by js
-[ ] save the desired theme in the local storage
+[x] activate toggling dark/light theme by js
+[x] save the desired theme in the local storage
 [ ] animation on each task when hover over it (font size)
 
 ADDED
