@@ -381,7 +381,7 @@ html:has(.app__theme-toggler:checked) .background-image {
   }
 }
 
-html:has(.app__theme-toggler:checked) {
+.app__theme--isLight {
   --page-bg: hsl(236, 33%, 92%);
   --app-bg: hsl(0, 0%, 98%);
   --task-text-color: hsl(235, 19%, 35%);

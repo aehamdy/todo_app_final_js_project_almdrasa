@@ -9,6 +9,8 @@ const completedButton = document.querySelector(".completed-label");
 const allButton = document.querySelector(".all-label");
 const clearButton = document.querySelector(".clear-button");
 const tasksCount = document.querySelector(".app__tasks-left");
+const bodyElement = document.querySelector("body");
+
 
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
@@ -122,8 +124,8 @@ const initTasks = (tasks) => {
 
 const toggleTask = (e, index) => {
     const tasks = getFromStorage("tasks");
-    e.currentTarget.classList.toggle("checked");
-    e.currentTarget.classList.toggle("unchecked");
+    e.target.classList.toggle("checked");
+    e.target.classList.toggle("unchecked");
     tasks[index].isChecked = !tasks[index].isChecked;
     saveToStorage("tasks", tasks);
     taskCounter();
@@ -165,6 +167,13 @@ const taskCounter = () => {
     tasksCount.innerHTML = tasks.length > 0 ? tasks.length : 0;
 };
 
+const themeToggler = (e) => {
+    e.currentTarget.classList.toggle("app__theme--isLight");
+    e.currentTarget.classList.contains("app__theme--isLight") ? saveToStorage("theme", "light") : localStorage.removeItem("theme");
+};
+
+bodyElement.addEventListener("click", (e) => themeToggler(e));
+
 initDataOnLoad();
 
 
@@ -184,7 +193,7 @@ TODO
 [x] a variable to count the unchecked tasks
 [ ] activate toggling dark/light theme by js
 [ ] save the desired theme in the local storage
-[ ]animation on each task when hover over it (font size)
+[ ] animation on each task when hover over it (font size)
 
 ADDED
 -a button that adds tasks upon click on it
