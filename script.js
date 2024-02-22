@@ -9,8 +9,10 @@ const completedButton = document.querySelector(".completed-label");
 const allButton = document.querySelector(".all-label");
 const clearButton = document.querySelector(".clear-button");
 const tasksCount = document.querySelector(".app__tasks-left");
-const bodyElement = document.querySelector("body");
 
+const bodyElement = document.querySelector("body");
+const themeButton = document.querySelector(".app__theme-toggler");
+const themeIcon = document.querySelector(".app__theme-image");
 
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
@@ -167,12 +169,12 @@ const taskCounter = () => {
     tasksCount.innerHTML = tasks.length > 0 ? tasks.length : 0;
 };
 
-const themeToggler = (e) => {
-    e.currentTarget.classList.toggle("app__theme--isLight");
-    e.currentTarget.classList.contains("app__theme--isLight") ? saveToStorage("theme", "light") : localStorage.removeItem("theme");
+const toggleTheme = () => {
+    bodyElement.classList.toggle("app__theme--isLight");
+    saveToStorage("theme", bodyElement.classList.contains("app__theme--isLight"));
 };
 
-bodyElement.addEventListener("click", (e) => themeToggler(e));
+themeButton.addEventListener("click", toggleTheme);
 
 initDataOnLoad();
 

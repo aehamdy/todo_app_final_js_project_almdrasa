@@ -103,7 +103,7 @@ html:has(.app__theme-toggler:checked) .background-image {
 }
 
 .app__theme-toggler:checked + .app__theme-image {
-  background-image: url(./images/icon-moon.svg);
+  /* background-image: url(./images/icon-moon.svg); */
 }
 
 .app__inputs {
