@@ -173,6 +173,7 @@ const taskCounter = () => {
 const toggleTheme = () => {
     bodyElement.classList.toggle("app__theme--isLight");
     saveToStorage("theme", bodyElement.classList.contains("app__theme--isLight"));
+    getFromStorage("theme") === true ? themeIcon.style.backgroundImage = "url(./images/icon-moon.svg)" : themeIcon.style.backgroundImage = "url(./images/icon-sun.svg)";
 };
 
 themeButton.addEventListener("click", toggleTheme);
