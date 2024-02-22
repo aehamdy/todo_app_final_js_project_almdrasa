@@ -60,6 +60,7 @@ const saveToStorage = function (key, value) {
 };
 
 const removeTask = (e, index) => {
+    e.stopPropagation();
     const data = getFromStorage("tasks");
 
     const answer = confirm(`Do you really want to remove "${data[index].taskValue}" task from the list?`);
@@ -204,7 +205,7 @@ TODO
 [x] a variable to count the unchecked tasks
 [x] activate toggling dark/light theme by js
 [x] save the desired theme in the local storage
-[ ] animation on each task when hover over it (font size)
+[x] animation on each task when hover over it (font size)
 
 ADDED
 -a button that adds tasks upon click on it
