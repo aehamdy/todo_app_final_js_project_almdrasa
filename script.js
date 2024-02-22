@@ -11,6 +11,7 @@ const clearButton = document.querySelector(".clear-button");
 const tasksCount = document.querySelector(".app__tasks-left");
 
 const bodyElement = document.querySelector("body");
+const bgElement = document.querySelector(".background-image")
 const themeButton = document.querySelector(".app__theme-toggler");
 const themeIcon = document.querySelector(".app__theme-image");
 
@@ -173,7 +174,13 @@ const taskCounter = () => {
 const toggleTheme = () => {
     bodyElement.classList.toggle("app__theme--isLight");
     saveToStorage("theme", bodyElement.classList.contains("app__theme--isLight"));
-    getFromStorage("theme") === true ? themeIcon.style.backgroundImage = "url(./images/icon-moon.svg)" : themeIcon.style.backgroundImage = "url(./images/icon-sun.svg)";
+    if (getFromStorage("theme") === true) {
+        themeIcon.style.backgroundImage = "url(./images/icon-moon.svg)";
+        bgElement.style.backgroundImage = "url(./images/bg-desktop-light.jpg)";
+    } else {
+        themeIcon.style.backgroundImage = "url(./images/icon-sun.svg)"
+        bgElement.style.backgroundImage = "url(./images/bg-desktop-dark.jpg)";
+    }
 };
 
 themeButton.addEventListener("click", toggleTheme);

@@ -63,10 +63,6 @@ body {
   transition: calc(var(--hover-animation-timing) + 0.2s);
 }
 
-html:has(.app__theme-toggler:checked) .background-image {
-  background-image: url(./images/bg-desktop-light.jpg);
-}
-
 .app {
   min-width: 380px;
   max-width: 500px;
