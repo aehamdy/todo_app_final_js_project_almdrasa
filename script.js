@@ -117,6 +117,7 @@ addButton.addEventListener("click", addTask);
 
 const initDataOnLoad = () => {
     initTasks(getFromStorage("tasks"));
+    getFromStorage("theme") && toggleTheme();
 };
 
 const initTasks = (tasks) => {
