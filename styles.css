@@ -189,6 +189,15 @@ body {
   transition: calc(var(--hover-animation-timing) + 0.2s);
 }
 
+.app__tasks {
+  /* position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: red;
+  padding-top: 50px; */
+}
+
 .app__task {
   display: block;
   position: relative;
@@ -198,6 +207,7 @@ body {
   color: var(--task-text-color);
   padding: 22px 35px;
   border-bottom: 0.1rem solid var(--task-border-color);
+  border: 0.1rem solid var(--task-border-color);
   cursor: pointer;
   transition: var(--hover-animation-timing);
 }
@@ -209,15 +219,11 @@ body {
 .app__tasks.show-completed > .unchecked {
   display: none;
 }
+
 .app__task:hover {
   color: var(--task-text-color-hover);
   font-size: 1.99rem;
 }
-
-/* .app__task:has(.checked) {
-  text-decoration: line-through;
-  color: var(--task-text-color-checked);
-} */
 
 .app__task.checked {
   text-decoration: line-through;
@@ -235,6 +241,10 @@ body {
 
 .app__task:hover .app__delete {
   opacity: 1;
+}
+
+.app__task.dragging {
+  background-color: lightgreen;
 }
 
 /* Hide default checkbox */

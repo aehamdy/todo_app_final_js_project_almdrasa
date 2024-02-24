@@ -9,15 +9,14 @@ const completedButton = document.querySelector(".completed-label");
 const allButton = document.querySelector(".all-label");
 const clearButton = document.querySelector(".clear-button");
 const tasksCount = document.querySelector(".app__tasks-left");
-
 const bodyElement = document.querySelector("body");
 const bgElement = document.querySelector(".background-image")
 const themeButton = document.querySelector(".app__theme-toggler");
 const themeIcon = document.querySelector(".app__theme-image");
+const sortableList = document.querySelectorAll(".app__tasks");
 
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
-
 
 
 function showError(message) {
@@ -37,7 +36,7 @@ const renderTasks = function (tasksArr) {
     let li = "";
 
     tasksArr.forEach((task) => {
-    li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}">
+    li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}" draggable="true">
     <input class="app__checkbox" type="checkbox">
     <span class="app__checkmark"></span>
     ${task.taskValue}
@@ -48,7 +47,6 @@ const renderTasks = function (tasksArr) {
     tasksList.innerHTML = li;
     taskCounter();
 };
-
 
 const getFromStorage = function (key) {
     const data = localStorage.getItem(key);
@@ -64,24 +62,34 @@ const removeTask = (e, index) => {
     const data = getFromStorage("tasks");
 
     const answer = confirm(`Do you really want to remove "${data[index].taskValue}" task from the list?`);
-
     if (!answer) return;
 
-    const tasks = getFromStorage("tasks");
+    // const tasks = getFromStorage("tasks");
 
-    tasks.splice(index, 1);
+    data.splice(index, 1);
 
-    saveToStorage("tasks", tasks);
-    initTasks(tasks)
+    saveToStorage("tasks", data);
+    initTasks(data)
 };
 
 const initTaskListeners = () => {
     getDeleteButtons().forEach((button, index) => {
         button.addEventListener("click", (e) => removeTask(e, index));
     });
+
     getLis().forEach((li, index) => {
         li.addEventListener("click", (e) => toggleTask(e, index));
-    })
+    });
+
+    getLis().forEach(li => {
+        li.addEventListener("dragstart", (e) => {
+            e.target.classList.add("dragging");
+            console.log(e.target);
+        });
+        li.addEventListener("dragend", (e) => {
+            e.target.classList.remove("dragging");
+        })
+    });
 };
 
 const addTask = function () {
@@ -120,11 +128,13 @@ addButton.addEventListener("click", addTask);
 const initDataOnLoad = () => {
     initTasks(getFromStorage("tasks"));
     getFromStorage("theme") && toggleTheme();
+    
 };
 
 const initTasks = (tasks) => {
     renderTasks(tasks);
     initTaskListeners();
+    restoreTaskOrderFromLocalStorage();
 };
 
 const toggleTask = (e, index) => {
@@ -184,6 +194,73 @@ const toggleTheme = () => {
     }
 };
 
+
+const startSorting = (e) => {
+    e.preventDefault();
+
+    const draggingItem = document.querySelector(".dragging");
+    const siblingItems = [...tasksList.querySelectorAll(".app__task:not(.dragging)")];
+
+    let nextSibling = siblingItems.reduce((closest, sibling) => {
+        const rect = sibling.getBoundingClientRect();
+        const offset = e.clientY - rect.top - rect.height / 2;
+
+        if (offset < 0 && offset > closest.offset) {
+            return { offset: offset, element: sibling };
+        } else {
+            return closest;
+        }
+    }, { offset: Number.NEGATIVE_INFINITY }).element;
+
+    if (nextSibling !== draggingItem.nextSibling) {
+        tasksList.insertBefore(draggingItem, nextSibling);
+        updateTaskOrderInLocalStorage();
+    }
+};
+
+const updateTaskOrderInLocalStorage = () => {
+    const tasks = [...tasksList.querySelectorAll(".app__task")];
+    let taskArr = [];
+    tasks.forEach(task => {
+        // Remove the delete button span from the text content
+        let taskText = "";
+        task.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                taskText += node.textContent.trim();
+            }
+        });
+
+        if (task.classList.contains("unchecked")) {
+            let each = {
+                taskValue: taskText,
+                isChecked: false
+            } 
+            taskArr.push(each);
+        } else if (task.classList.contains("checked")) {
+            let each = {
+                taskValue: taskText,
+                isChecked: true
+            }
+            taskArr.push(each);
+        }
+    });
+    saveToStorage("tasks", taskArr);
+};
+
+
+const restoreTaskOrderFromLocalStorage = () => {
+    const tasksOrder = getFromStorage("tasks");
+    if (tasksOrder) {
+        const tasks = [...tasksList.querySelectorAll(".app__task")];
+        tasks.sort((a, b) => {
+            return tasksOrder.indexOf(a.textContent) - tasksOrder.indexOf(b.textContent);
+        });
+        tasks.forEach(task => tasksList.appendChild(task));
+    }
+};
+
+tasksList.addEventListener("dragover", startSorting);
+tasksList.addEventListener("dragenter", e => e.preventDefault());
 themeButton.addEventListener("click", toggleTheme);
 
 initDataOnLoad();
@@ -206,6 +283,11 @@ TODO
 [x] activate toggling dark/light theme by js
 [x] save the desired theme in the local storage
 [x] animation on each task when hover over it (font size)
+[ ] Add draggable functionality to the app
+[ ] Let the input automatically focused after adding a task
+[ ] Add keyboard accessibility
+[ ] Add a message appears on clicking the delete button with "Yes" and "No"
+
 
 ADDED
 -a button that adds tasks upon click on it
