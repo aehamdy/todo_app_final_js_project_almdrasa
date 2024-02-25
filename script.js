@@ -81,6 +81,10 @@ const initTaskListeners = () => {
         li.addEventListener("click", (e) => toggleTask(e, index));
     });
 
+    getLis().forEach(item => item.addEventListener("keydown", (e) => {
+        e.key === "Enter" && item.click()
+    }))
+
     getLis().forEach(li => {
         li.addEventListener("dragstart", (e) => {
             e.target.classList.add("dragging");
