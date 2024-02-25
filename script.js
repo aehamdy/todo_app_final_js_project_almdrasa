@@ -13,7 +13,7 @@ const bodyElement = document.querySelector("body");
 const bgElement = document.querySelector(".background-image")
 const themeButton = document.querySelector(".app__theme-toggler");
 const themeIcon = document.querySelector(".app__theme-image");
-const sortableList = document.querySelectorAll(".app__tasks");
+const classesButtons = document.querySelectorAll(".app__label");
 
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
@@ -83,7 +83,7 @@ const initTaskListeners = () => {
 
     getLis().forEach(item => item.addEventListener("keydown", (e) => {
         e.key === "Enter" && item.click()
-    }))
+    }));
 
     getLis().forEach(li => {
         li.addEventListener("dragstart", (e) => {
@@ -94,6 +94,10 @@ const initTaskListeners = () => {
         })
     });
 };
+
+classesButtons.forEach(button => button.addEventListener("keydown", (e) => {
+    e.key === "Enter" && button.click();
+}));
 
 const addTask = function () {
     let userInput = inputField.value.trim();
@@ -266,6 +270,9 @@ const updateTaskOrderInLocalStorage = () => {
 tasksList.addEventListener("dragover", startSorting);
 tasksList.addEventListener("dragenter", e => e.preventDefault());
 themeButton.addEventListener("click", toggleTheme);
+themeButton.addEventListener("keydown", (e) => {
+    e.key === "Enter" && themeButton.click();
+});
 
 initDataOnLoad();
 
