@@ -184,6 +184,7 @@ clearButton.addEventListener("click", () => {
     });
     saveToStorage("tasks", tasks);
     renderTasks(tasks);
+    initDataOnLoad();
 });
 
 const taskCounter = () => {
