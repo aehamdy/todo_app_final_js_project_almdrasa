@@ -84,7 +84,6 @@ const initTaskListeners = () => {
     getLis().forEach(li => {
         li.addEventListener("dragstart", (e) => {
             e.target.classList.add("dragging");
-            console.log(e.target);
         });
         li.addEventListener("dragend", (e) => {
             e.target.classList.remove("dragging");
@@ -134,7 +133,7 @@ const initDataOnLoad = () => {
 const initTasks = (tasks) => {
     renderTasks(tasks);
     initTaskListeners();
-    restoreTaskOrderFromLocalStorage();
+    // restoreTaskOrderFromLocalStorage();
 };
 
 const toggleTask = (e, index) => {
@@ -248,16 +247,16 @@ const updateTaskOrderInLocalStorage = () => {
 };
 
 
-const restoreTaskOrderFromLocalStorage = () => {
-    const tasksOrder = getFromStorage("tasks");
-    if (tasksOrder) {
-        const tasks = [...tasksList.querySelectorAll(".app__task")];
-        tasks.sort((a, b) => {
-            return tasksOrder.indexOf(a.textContent) - tasksOrder.indexOf(b.textContent);
-        });
-        tasks.forEach(task => tasksList.appendChild(task));
-    }
-};
+// const restoreTaskOrderFromLocalStorage = () => {
+//     const tasksOrder = getFromStorage("tasks");
+//     if (tasksOrder) {
+//         const tasks = [...tasksList.querySelectorAll(".app__task")];
+//         tasks.sort((a, b) => {
+//             return tasksOrder.indexOf(a.textContent) - tasksOrder.indexOf(b.textContent);
+//         });
+//         tasks.forEach(task => tasksList.appendChild(task));
+//     }
+// };
 
 tasksList.addEventListener("dragover", startSorting);
 tasksList.addEventListener("dragenter", e => e.preventDefault());
@@ -283,9 +282,13 @@ TODO
 [x] activate toggling dark/light theme by js
 [x] save the desired theme in the local storage
 [x] animation on each task when hover over it (font size)
-[ ] Add draggable functionality to the app
+[x] Add draggable functionality to the app
+[ ] Adjust responsivity
+[ ] Add animation for theme images
+[ ] Hide the add button and appear it when the user clicks on the input field
 [ ] Let the input automatically focused after adding a task
 [ ] Add keyboard accessibility
+[ ] Styling for other tasks when a task getting drag 
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
 
 
