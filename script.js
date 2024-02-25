@@ -119,6 +119,7 @@ const addTask = function () {
         initTasks(tasksArr);
 
         inputField.value = "";
+        inputField.focus();
     };
 };
 
@@ -284,9 +285,9 @@ TODO
 [x] animation on each task when hover over it (font size)
 [x] Add draggable functionality to the app
 [x] Adjust responsivity
-[ ] Add animation for theme images
+[x] Add animation for theme images
+[x] Let the input automatically focused after adding a task
 [ ] Hide the add button and appear it when the user clicks on the input field
-[ ] Let the input automatically focused after adding a task
 [ ] Add keyboard accessibility
 [ ] Styling for other tasks when a task getting drag 
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
