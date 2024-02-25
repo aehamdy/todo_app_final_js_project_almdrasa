@@ -18,6 +18,15 @@ const classesButtons = document.querySelectorAll(".app__label");
 const getDeleteButtons = () => document.querySelectorAll(".app__delete")
 const getLis = () => document.querySelectorAll(".app__task");
 
+document.querySelector(".app__inputs").addEventListener("click", (e) => { 
+    e.stopPropagation();
+    addButton.classList.remove("hidden");
+});
+
+window.addEventListener("click", () => {
+    addButton.classList.add("hidden");
+});
+
 
 function showError(message) {
     errorElement.textContent = message;
@@ -307,9 +316,11 @@ TODO
 [x] Add animation for theme images
 [x] Let the input automatically focused after adding a task
 [x] Add keyboard accessibility
-[ ] Hide the add button and appear it when the user clicks on the input field
+
+[x] Hide the add button and appear it when the user clicks on the input field
 [ ] Styling for other tasks when a task getting drag 
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
+[ ] Update flow chart if needed
 
 
 ADDED

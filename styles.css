@@ -65,7 +65,7 @@ body {
 }
 
 .app {
-  min-width: 380px;
+  min-width: 396px;
   max-width: 500px;
   position: absolute;
   left: 50%;
@@ -156,7 +156,13 @@ body {
   background-color: var(--input-bg);
   border-radius: 40px;
   cursor: pointer;
-  transition: var(--hover-animation-timing);
+  transition: calc(var(--hover-animation-timing) * 2);
+}
+
+.app__submit.hidden {
+  opacity: 0;
+  width: 0;
+  padding: 0;
 }
 
 .app__submit:hover,
