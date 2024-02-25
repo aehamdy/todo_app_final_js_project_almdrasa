@@ -273,6 +273,9 @@ themeButton.addEventListener("click", toggleTheme);
 themeButton.addEventListener("keydown", (e) => {
     e.key === "Enter" && themeButton.click();
 });
+inputField.addEventListener("keydown", (e) => {
+    e.key === "Enter" && addTask();
+});
 
 initDataOnLoad();
 
