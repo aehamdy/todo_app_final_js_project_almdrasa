@@ -37,7 +37,7 @@ const renderTasks = function (tasksArr) {
 
     tasksArr.forEach((task) => {
     li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}" draggable="true" tabindex="0">
-    <input class="app__checkbox" type="checkbox">
+    <input class="app__checkbox" type="checkbox" tabindex="-1">
     <span class="app__checkmark"></span>
     ${task.taskValue}
     <span class="app__delete">X</span>
