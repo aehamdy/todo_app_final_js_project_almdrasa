@@ -283,7 +283,7 @@ TODO
 [x] save the desired theme in the local storage
 [x] animation on each task when hover over it (font size)
 [x] Add draggable functionality to the app
-[ ] Adjust responsivity
+[x] Adjust responsivity
 [ ] Add animation for theme images
 [ ] Hide the add button and appear it when the user clicks on the input field
 [ ] Let the input automatically focused after adding a task
