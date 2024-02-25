@@ -70,7 +70,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -57%);
 }
 
 .app__header {
@@ -378,10 +378,21 @@ body {
   color: var(--task-text-color-hover);
 }
 
+.text {
+  color: var(--task-text-color-checked);
+  text-align: center;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  width: 100%;
+  bottom: -65px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 959px) {
   form {
     position: absolute;
-    bottom: -80px;
+    bottom: -75px;
     background-color: var(--app-bg);
     padding: 18px 30px;
     width: 100%;
@@ -390,6 +401,9 @@ body {
     display: flex;
     justify-content: space-evenly;
     transition: var(--hover-animation-timing);
+  }
+  .text {
+    bottom: -121px;
   }
 }
 

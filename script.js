@@ -305,7 +305,7 @@ TODO
 [x] Adjust responsivity
 [x] Add animation for theme images
 [x] Let the input automatically focused after adding a task
-[ ] Add keyboard accessibility
+[x] Add keyboard accessibility
 [ ] Hide the add button and appear it when the user clicks on the input field
 [ ] Styling for other tasks when a task getting drag 
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
@@ -314,6 +314,7 @@ TODO
 ADDED
 -a button that adds tasks upon click on it
 -style and animation to the button for better UX
--a validation for the input field
+-validation for the input field
 -animation upon invalid input for better UX
+-keyboard accessibility for the whole app
  */
