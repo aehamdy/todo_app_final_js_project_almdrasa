@@ -36,7 +36,7 @@ const renderTasks = function (tasksArr) {
     let li = "";
 
     tasksArr.forEach((task) => {
-    li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}" draggable="true">
+    li += `<li class="app__task${task.isChecked ? ' checked': ' unchecked'}" draggable="true" tabindex="0">
     <input class="app__checkbox" type="checkbox">
     <span class="app__checkmark"></span>
     ${task.taskValue}
@@ -287,9 +287,9 @@ TODO
 [x] Adjust responsivity
 [x] Add animation for theme images
 [x] Let the input automatically focused after adding a task
+[ ] Add keyboard accessibility
 [ ] Hide the add button and appear it when the user clicks on the input field
 [ ] Styling for other tasks when a task getting drag 
-[ ] Add keyboard accessibility
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
 
 

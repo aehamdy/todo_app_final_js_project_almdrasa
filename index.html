@@ -26,7 +26,12 @@
       <div class="app">
         <div class="app__header">
           <h1 class="app__heading">TODO</h1>
-          <input class="app__theme-toggler checked" type="checkbox" />
+          <input
+            class="app__theme-toggler checked"
+            type="checkbox"
+            tabindex="0"
+            role="button"
+          />
           <div class="app__theme-image"></div>
         </div>
 
@@ -60,7 +65,9 @@
                   name="shownTasks"
                   value="all"
                 />
-                <label class="app__label all-label" for="all">All</label>
+                <label class="app__label all-label" for="all" tabindex="0"
+                  >All</label
+                >
 
                 <input
                   class="app__toggler active"
@@ -69,7 +76,7 @@
                   name="shownTasks"
                   value="active"
                 />
-                <label class="app__label active-label" for="active"
+                <label class="app__label active-label" for="active" tabindex="0"
                   >Active</label
                 >
 
@@ -80,7 +87,10 @@
                   name="shownTasks"
                   value="completed"
                 />
-                <label class="app__label completed-label" for="completed"
+                <label
+                  class="app__label completed-label"
+                  for="completed"
+                  tabindex="0"
                   >Completed</label
                 >
               </form>
