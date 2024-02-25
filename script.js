@@ -288,8 +288,8 @@ TODO
 [x] Add animation for theme images
 [x] Let the input automatically focused after adding a task
 [ ] Hide the add button and appear it when the user clicks on the input field
-[ ] Add keyboard accessibility
 [ ] Styling for other tasks when a task getting drag 
+[ ] Add keyboard accessibility
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
 
 

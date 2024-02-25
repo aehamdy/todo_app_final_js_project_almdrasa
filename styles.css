@@ -18,6 +18,7 @@
 
   --page-bg: hsl(235, 21%, 11%); /*very-dark-blue*/
   --app-bg: hsl(235, 24%, 19%); /*very-dark-desaturated-blue*/
+  --input-bg: #edeef00a;
   --button-color: hsl(236, 9%, 61%);
   --task-text-color: hsl(234, 39%, 85%); /*light-grayish-blue*/
   --task-text-color-hover: hsl(236, 33%, 92%);
@@ -94,17 +95,17 @@ body {
 }
 
 .app__theme-toggler:checked + .app__theme-image {
-  transform: rotate(80deg);
+  transform: rotate(360deg);
 }
 
 .app__theme-image {
   width: 30px;
   background: url(./images/icon-sun.svg) no-repeat center;
-  transition: calc(var(--hover-animation-timing) + 0.2s);
+  transition: calc(var(--hover-animation-timing) * 3.5);
 }
 
 .app__inputs {
-  height: 73.32px;
+  height: 96px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -122,19 +123,22 @@ body {
 
 .app__input {
   border: none;
-  background-color: transparent;
+  width: 100%;
   margin-inline-end: 12px;
   padding: 10px 20px;
-  width: 100%;
-  font-family: "Josefin Sans", sans-serif;
   font-size: 1.8rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: var(--input-bg);
   color: var(--task-text-color);
+  border-radius: 10px;
   letter-spacing: 1px;
+  transition: scale var(--hover-animation-timing);
 }
 
 .app__input:focus {
   border: none;
   outline: none;
+  border-bottom: 1px solid hsla(220, 98%, 61%, 0.801);
   caret-color: var(--primary-blue);
 }
 
@@ -144,11 +148,14 @@ body {
 
 .app__submit {
   border: none;
+  width: 90px;
   padding: 10px 20px;
   font-size: 2rem;
-  border-radius: var(--border-radius-4);
-  background-color: var(--button-color);
+  color: var(--task-text-color);
+  background-color: var(--input-bg);
+  border-radius: 40px;
   cursor: pointer;
+  transition: var(--hover-animation-timing);
 }
 
 .app__submit:hover,
@@ -240,7 +247,7 @@ body {
 
 .app__task.dragging {
   scale: 1.2;
-  background-color: lightgreen;
+  background-color: hsla(220, 100%, 65%, 0.849);
   color: #121212;
   border-radius: var(--border-radius-4);
   cursor: grabbing;
@@ -339,10 +346,6 @@ body {
   color: var(--app-button-text-color);
   user-select: none;
   cursor: auto;
-
-  > span {
-    /* color: crimson; */
-  }
 }
 
 .app__items-left,
@@ -393,6 +396,8 @@ body {
 .app__theme--isLight {
   --page-bg: hsl(236, 33%, 92%);
   --app-bg: hsl(0, 0%, 98%);
+  /* --input-bg: hsl(236deg 9% 61% / 20%); */
+  --input-bg: hsl(236deg 19.9% 80.39% / 20%);
   --task-text-color: hsl(235, 19%, 35%);
   --task-text-color-hover: hsl(233, 14%, 35%);
   --task-text-color-checked: hsl(234, 11%, 52%);
