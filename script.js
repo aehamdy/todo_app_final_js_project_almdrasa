@@ -22,10 +22,24 @@ document.querySelector(".app__inputs").addEventListener("click", (e) => {
     e.stopPropagation();
     addButton.classList.remove("hidden");
 });
-
-window.addEventListener("click", () => {
+document.querySelector(".app__inputs").addEventListener("focusout", (e) => { 
+    e.stopPropagation();
     addButton.classList.add("hidden");
 });
+
+document.querySelector(".app__input").addEventListener("focus", (e) => { 
+    e.stopPropagation();
+    addButton.classList.remove("hidden");
+});
+
+addButton.addEventListener("focus", (e) => { 
+    e.stopPropagation();
+    addButton.classList.remove("hidden");
+});
+
+// window.addEventListener("click", () => {
+//     addButton.classList.add("hidden");
+// });
 
 
 function showError(message) {
@@ -318,6 +332,7 @@ TODO
 [x] Add keyboard accessibility
 
 [x] Hide the add button and appear it when the user clicks on the input field
+[ ] activate hover state on delete button when select selecting it by tab button
 [ ] Styling for other tasks when a task getting drag 
 [ ] Add a message appears on clicking the delete button with "Yes" and "No"
 [ ] Update flow chart if needed
