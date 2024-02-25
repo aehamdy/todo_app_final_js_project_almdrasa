@@ -40,7 +40,7 @@ const renderTasks = function (tasksArr) {
     <input class="app__checkbox" type="checkbox" tabindex="-1">
     <span class="app__checkmark"></span>
     ${task.taskValue}
-    <span class="app__delete">X</span>
+    <span class="app__delete" tabindex="0">X</span>
     </li>`
     });
 
@@ -76,6 +76,10 @@ const initTaskListeners = () => {
     getDeleteButtons().forEach((button, index) => {
         button.addEventListener("click", (e) => removeTask(e, index));
     });
+
+    getDeleteButtons().forEach((button, index) => button.addEventListener("keydown", (e) => {
+        e.key === "Enter" && removeTask(e, index)
+    }));
 
     getLis().forEach((li, index) => {
         li.addEventListener("click", (e) => toggleTask(e, index));
