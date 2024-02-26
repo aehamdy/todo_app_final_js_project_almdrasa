@@ -101,7 +101,19 @@ const initTaskListeners = () => {
     });
 
     getDeleteButtons().forEach((button, index) => button.addEventListener("keydown", (e) => {
-        e.key === "Enter" && removeTask(e, index)
+        e.key === "Enter" && removeTask(e, index);
+    }));
+
+    getLis().forEach((item => item.addEventListener("focus", e => {
+        const del = item.querySelector(".app__delete");
+        del.addEventListener("focus", () => {del.style.opacity="1"})
+        del.style.opacity = "1";
+    })));
+
+    getLis().forEach(item => item.addEventListener("blur", () => {
+        const del = item.querySelector(".app__delete");
+        del.addEventListener("blur", () => {del.style.opacity="0"})
+        del.style.opacity = "0";
     }));
 
     getLis().forEach((li, index) => {
