@@ -260,9 +260,6 @@ body {
   border-radius: var(--border-radius-4);
   cursor: grabbing;
 }
-.app__task.dragging :where(.app__checkmark, .app__delete) {
-  opacity: 0;
-}
 
 /* Hide default checkbox */
 .app__checkbox {
