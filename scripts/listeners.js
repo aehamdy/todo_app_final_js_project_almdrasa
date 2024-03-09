@@ -2,7 +2,7 @@ import { activeButton, addButton, allButton,
     classesButtons, clearButton, completedButton, 
     inputField, tasksList, themeButton } from "./elements.js";
     
-import { addTask, getFromStorage, initDataOnLoad, initTasks, renderTasks, 
+import { addTask, getFromStorage, initTasks, renderTasks, 
     saveToStorage, startSorting, toggleTheme } from "./utils.js";
 
 document.querySelector(".app__inputs").addEventListener("click", (e) => { 
@@ -57,7 +57,7 @@ clearButton.addEventListener("click", () => {
     });
     saveToStorage("tasks", tasks);
     renderTasks(tasks);
-    initDataOnLoad();
+    initTasks(getFromStorage("tasks"));
 });
 
 tasksList.addEventListener("dragover", startSorting);
